@@ -30,17 +30,13 @@ function handleFlashingLight(value) {
 
 exports.allGood = function() {
 
-	if(interval == undefined) interval = 500;
-	//set default time for blinkTime
-	//number of times to blink the light on and off
-	if(blinkTime == undefined) blinkTime = 5;
-
-	var request = new Object();
-  	request.body = {"pin":11};
-
   	var flag = false;
 
-  	var intrvl = setInterval(function(request){
+  	var intrvl = setInterval(function(){
+  		
+  		var request = new Object();
+  		request.body = {"pin":11};
+
   		if(!flag){
 	  		fnRouter.turnON(request,function(results){
 				// console.log('Good Pin ON');
