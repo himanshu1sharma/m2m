@@ -39,10 +39,12 @@ exports.allGood = function() {
 
   		if(!flag){
 	  		fnRouter.turnON(request,function(results){
+	  			flag = true;
 				// console.log('Good Pin ON');
 			});
 		} else {
 			fnRouter.turnOff(request,function(results){
+				flag = false;
 				// console.log('Good Pin O');
 			});
 		}
