@@ -27,3 +27,13 @@ function handleFlashingLight(value) {
 	}
 
 }
+
+exports.allGood = function() {
+	var request = new Object();
+  	request.body = {"pin":11};
+	console.log('Turning Green Light On');
+	fnRouter.turnON(request,function(results){
+			console.log('Good Pin ON');
+		});
+	
+}

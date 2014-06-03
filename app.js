@@ -123,6 +123,7 @@ function bindStreaming() {
 try {  
 
     console.log('Binding to the streaming API');
+   callbackHandler.allGood();
     // subscribe to a pushtopic
     var str = org.stream({ topic: 'Interface', oauth: oauth });
 
