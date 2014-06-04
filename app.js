@@ -61,6 +61,8 @@ var intrvl = setInterval(maintainSession,899999);
 
 function createConnection(){
 
+  callbackHandler.exceptionLed();
+
   console.log('creating Session');
 
   try{
@@ -77,6 +79,7 @@ function createConnection(){
 
   } catch (ex) {
     console.log(ex);
+    callbackHandler.exceptionLed();
     createConnection();
   }
 }
@@ -97,6 +100,7 @@ function maintainSession(){
 
   } catch (ex) {
     console.log(ex);
+    callbackHandler.exceptionLed();
     createSession();
   }
 
@@ -108,6 +112,7 @@ function createSession(){
 
     if(err) {
        console.log(err);
+       callbackHandler.exceptionLed();
        createConnection();
     } else {
       oauth = this.oauth;
@@ -133,6 +138,7 @@ try {
 
     str.on('error', function(error) {
       console.log('error: ' + error);
+      callbackHandler.exceptionLed();
       createConnection();
     });
 
@@ -143,6 +149,7 @@ try {
 
   } catch (ex) {
     console.log(ex);
+    callbackHandler.exceptionLed();
     createSession();
   } 
 }

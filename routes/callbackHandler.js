@@ -28,29 +28,55 @@ function handleFlashingLight(value) {
 
 }
 
-exports.allGood = function() {
+exports.exceptionLed = function() {
 
-  	var flag = false;
+	var request = new Object();
+	request.body = {"pin":18};
 
-  	var intrvl = setInterval(function(){
-  		
-  		var request = new Object();
-  		request.body = {"pin":11};
-
-  		if(!flag){
-	  		fnRouter.turnON(request,function(results){
+	fnRouter.turnON(request,function(results){
 	  			flag = true;
 				// console.log('Good Pin ON');
 			});
-		} else {
-			fnRouter.turnOff(request,function(results){
-				flag = false;
-				// console.log('Good Pin O');
+
+	console.log('Turning Red Light On');
+
+	console.log('Turning green off');
+
+
+	var requestGr = new Object();
+	requestGr.body = {"pin":22};
+
+	fnRouter.turnOff(requestGr,function(results){
+	  			flag = true;
+				// console.log('Good Pin ON');
 			});
-		}
-  	},2000);
+
+	console.log('Turning Green Light Off');
+
+
+}
+
+exports.allGood = function() {
+
+	var request = new Object();
+	request.body = {"pin":22};
+
+	fnRouter.turnON(request,function(results){
+	  			flag = true;
+				// console.log('Good Pin ON');
+			});
 
 	console.log('Turning Green Light On');
+
+	var requestRe = new Object();
+	requestRe.body = {"pin":18};
+
+	fnRouter.turnOff(requestRe,function(results){
+	  			flag = true;
+				// console.log('Good Pin ON');
+			});
+
+	console.log('Turning Red Light Off');
 	
 	
 }
